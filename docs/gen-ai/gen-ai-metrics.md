@@ -295,7 +295,9 @@ This metric SHOULD be specified with [ExplicitBucketBoundaries] of [0.01, 0.02, 
 
 | Name | Instrument Type | Unit (UCUM) | Description | Stability | Entity Associations |
 | -------- | --------------- | ----------- | -------------- | --------- | ------ |
-| `gen_ai.client.operation.time_to_first_chunk` | Histogram | `s` | Time to receive the first chunk. | ![Development](https://img.shields.io/badge/-development-blue) | |
+| `gen_ai.client.operation.time_to_first_chunk` | Histogram | `s` | Time to receive the first chunk, measured from when the client issues the generation request to when the first chunk is received in the response stream. [1] | ![Development](https://img.shields.io/badge/-development-blue) | |
+
+**[1]:** This metrics SHOULD be reported for streaming calls and SHOULD NOT be reported otherwise.
 
 **Attributes:**
 
@@ -393,7 +395,9 @@ This metric SHOULD be specified with [ExplicitBucketBoundaries] of [0.01, 0.02, 
 
 | Name | Instrument Type | Unit (UCUM) | Description | Stability | Entity Associations |
 | -------- | --------------- | ----------- | -------------- | --------- | ------ |
-| `gen_ai.client.operation.time_per_output_chunk` | Histogram | `s` | Time per output chunk generated after the first chunk. | ![Development](https://img.shields.io/badge/-development-blue) | |
+| `gen_ai.client.operation.time_per_output_chunk` | Histogram | `s` | Time per output chunk, recorded for each chunk received after the first one, measured as the time elapsed from the end of the previous chunk to the end of the current chunk. [1] | ![Development](https://img.shields.io/badge/-development-blue) | |
+
+**[1]:** This metrics SHOULD be reported for streaming calls and SHOULD NOT be reported otherwise.
 
 **Attributes:**
 
